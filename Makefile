@@ -13,3 +13,7 @@ install:
 	mkdir -p ~/bin
 	cp -av ./cskeeper ~/bin/
 	cp -av ./vimscripts/* ~/.vim/plugin/
+
+prepare_commit:
+	make clean
+	@rm -f cscope*

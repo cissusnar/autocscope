@@ -23,20 +23,12 @@ int is_cscope_path(char * in_path)
 	}
 }
 
-int execute_cscope(char * in_path)
-{
-    chdir(in_path);
-    system("find `pwd` -name \"*.h\" -o -name \"*.c\" -o -name \"*.cpp\" > cscope.files");
-    return system("cscope -bq > /dev/null");
-}
-
 int build_cscope(char * in_path)
 {
     chdir(in_path);
     system("find `pwd` -name \"*.h\" -o -name \"*.c\" -o -name \"*.cpp\" > cscope.files");
     return system("cscope -bq > /dev/null");
 }
-
 
 int main(int argc, char * argv[])
 {
@@ -47,10 +39,10 @@ int main(int argc, char * argv[])
 	while(1)
 	{
 		getcwd(path,sizeof(path)-1);
-		if(is_cscope_path(path) && strcmp(path,workdir))
+		if(is_cscope_path(path))// && strcmp(path,workdir))
 		{
 			printf("%s",path);
-			return execute_cscope(path);;
+			return build_cscope(path);;
 		}
 		chdir("..");
 		if(!strcmp(path,PATH_SIGN))
