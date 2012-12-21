@@ -6,7 +6,6 @@ vim autoload & auto rebuild cscope database
 暂时只完成这两个功能, 但基本已经够用了. 
 
 Install:
-make
-make install
+make && make install
 
 zhangxiwen@qiyi.com
