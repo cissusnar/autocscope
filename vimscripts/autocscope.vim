@@ -4,7 +4,7 @@
 function! Load_cscope()
     let b:cspath = system("$HOME/bin/cskeeper")
     if strlen(b:cspath)
-        let ccommand = "cs add ".b:cspath."cscope.out"
+        let ccommand = "cs add ".b:cspath."/cscope.out"
         try
             exe ccommand
         catch
@@ -20,6 +20,8 @@ function! Save_and_update_cscope()
     let b:cspath = system("$HOME/bin/cskeeper")
     if strlen(b:cspath)
         try
+            let ccommand = "cs add ".b:cspath."/cscope.out"
+            exe ccommand
             cs reset
         catch
             return
