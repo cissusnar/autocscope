@@ -26,7 +26,7 @@ int is_cscope_path(char * in_path)
 int build_cscope(char * in_path)
 {
     chdir(in_path);
-    system("find `pwd` -type f -name \"*.h\" -o -name \"*.c\" -o -name \"*.cpp\" > cscope.files");
+    system("find `pwd` -type f -name \"*.h\" -o -type f -name \"*.c\" -o -type f -name \"*.cpp\" > cscope.files");
     return system("cscope -bq > /dev/null");
 }
 
